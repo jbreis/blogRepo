@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Set;
 
 /**
+ * Aspect responsible for having the bean set and get methods.
+ * 
  * @author joao
  *
  */

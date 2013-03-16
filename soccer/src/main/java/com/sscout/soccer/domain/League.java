@@ -9,11 +9,23 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/**
+ * Domain entity class responsible for having a league data and domain logic.
+ * 
+ * @author joao
+ * 
+ */
 public class League {
 
+	/**
+	 * League name for a given year.
+	 */
 	@NotEmpty
 	private String name = null;
 
+	/**
+	 * League calendar. Defines the league year entity
+	 */
 	@NotNull
 	private Calendar year = null;
 
