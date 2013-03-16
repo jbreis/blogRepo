@@ -7,13 +7,30 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>soccer Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <repositories>
+    <repository>
+        <id>jboss-public-repository-group</id>
+        <url>https://repository.jboss.org/nexus/content/groups/public-jboss</url>
+        <releases>
+          <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+        </snapshots>
+     </repository>
+	</repositories> 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-validator</artifactId>
+    	<version>4.3.0.Final</version>
     </dependency>
+    <dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.8.2</version>
+    <scope>test</scope>
+</dependency>
   </dependencies>
   <build>
     <finalName>soccer</finalName>
