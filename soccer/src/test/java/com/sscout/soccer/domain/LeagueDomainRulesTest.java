@@ -14,6 +14,12 @@ import javax.validation.ValidatorFactory;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * Unit tests for domain rules of entity League.
+ * 
+ * @author joao
+ * 
+ */
 public class LeagueDomainRulesTest {
 
 	private static Validator validator;
