@@ -16,7 +16,7 @@ import org.junit.Test;
  * @author joao
  * 
  */
-public class LeagueTest extends BaseTest {
+public class LeagueTest extends BaseTest<League> {
 
 	private static final String LEAGUE_NAME = "ZON SAGRES";
 	private static final Calendar calendar = Calendar.getInstance();
@@ -26,12 +26,7 @@ public class LeagueTest extends BaseTest {
 
 		League league = new League(null, calendar, getValidTeamSet());
 
-		Set<ConstraintViolation<League>> constraintViolations = validator
-				.validate(league);
-
-		assertEquals(1, constraintViolations.size());
-		assertEquals("may not be empty", constraintViolations.iterator().next()
-				.getMessage());
+		assertEmptyAttributes(league);
 	}
 
 	@Test
@@ -39,12 +34,7 @@ public class LeagueTest extends BaseTest {
 
 		League league = new League("", calendar, getValidTeamSet());
 
-		Set<ConstraintViolation<League>> constraintViolations = validator
-				.validate(league);
-
-		assertEquals(1, constraintViolations.size());
-		assertEquals("may not be empty", constraintViolations.iterator().next()
-				.getMessage());
+		assertEmptyAttributes(league);
 	}
 
 	@Test
@@ -52,10 +42,7 @@ public class LeagueTest extends BaseTest {
 
 		League league = new League(LEAGUE_NAME, calendar, getValidTeamSet());
 
-		Set<ConstraintViolation<League>> constraintViolations = validator
-				.validate(league);
-
-		assertEquals(0, constraintViolations.size());
+		assertEmptyConstraints(league);
 	}
 
 	@Test
@@ -63,12 +50,7 @@ public class LeagueTest extends BaseTest {
 
 		League league = new League(LEAGUE_NAME, null, getValidTeamSet());
 
-		Set<ConstraintViolation<League>> constraintViolations = validator
-				.validate(league);
-
-		assertEquals(1, constraintViolations.size());
-		assertEquals("may not be null", constraintViolations.iterator().next()
-				.getMessage());
+		assertNullAttribs(league);
 	}
 
 	@Test
@@ -81,12 +63,7 @@ public class LeagueTest extends BaseTest {
 	public final void assertLeagueTeamsIsNull() {
 		League league = new League(LEAGUE_NAME, calendar, null);
 
-		Set<ConstraintViolation<League>> constraintViolations = validator
-				.validate(league);
-
-		assertEquals(1, constraintViolations.size());
-		assertEquals("may not be null", constraintViolations.iterator().next()
-				.getMessage());
+		assertNullAttribs(league);
 	}
 
 	@Test
@@ -98,11 +75,10 @@ public class LeagueTest extends BaseTest {
 
 		League league = new League(LEAGUE_NAME, calendar, notValidSet);
 
-		Set<ConstraintViolation<League>> constraintViolations = validator
-				.validate(league);
+		Set<ConstraintViolation<League>> constraintValidations = getConstraintViolations(league);
 
-		assertEquals(1, constraintViolations.size());
-		assertEquals("size must be between 2 and 40", constraintViolations
+		assertEquals(1, constraintValidations.size());
+		assertEquals("size must be between 2 and 40", constraintValidations
 				.iterator().next().getMessage());
 	}
 
@@ -110,10 +86,7 @@ public class LeagueTest extends BaseTest {
 	public final void assertLeagueTeamsSizeIsBiggerThanTwo() {
 		League league = new League(LEAGUE_NAME, calendar, getValidTeamSet());
 
-		Set<ConstraintViolation<League>> constraintViolations = validator
-				.validate(league);
-
-		assertEquals(0, constraintViolations.size());
+		assertEmptyConstraints(league);
 	}
 
 }
