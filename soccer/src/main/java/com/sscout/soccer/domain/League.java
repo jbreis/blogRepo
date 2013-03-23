@@ -37,4 +37,11 @@ public class League {
 	@Valid
 	private Set<Team> leagueTeams = null;
 
+	public League(String name, Calendar year, Set<Team> leagueTeams) {
+		super();
+		this.name = name;
+		this.year = year;
+		this.leagueTeams = leagueTeams;
+	}
+
 }
